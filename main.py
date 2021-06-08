@@ -42,6 +42,18 @@ class Scale:
             self.diatonicNotes.append(NOTES[currentNote])
             currentNote =  currentNote + i if (currentNote + i) <= 11 else (currentNote + i) - 12
 
+    def GetDiatonicChord(self, numeral, extension=5):
+        chord = []
+        numeral = numeral - 1 
+        rootNote = self.diatonicNotes[numeral]
+        for i in range(0, extension, 2):
+            chord.append(self.diatonicNotes[numeral + i]) # OUT OF RANGE 
+        return chord
+
+    def GetParallelScale():
+        # to be continued 
+
+
 def GetNoteByLetter(noteLetter):
     return NOTES.index(noteLetter)
 
@@ -53,6 +65,7 @@ if __name__ == "__main__":
     scale = GetRandomnScale()
     print("Scale Root Note: " + str(NOTES[scale.rootNote]))
     print("Diatonic Notes: " + str(scale.diatonicNotes))
+    print("Diatonic Chord [II]: " + str(scale.GetDiatonicChord(3)))
 
     # cis = Scale(GetNoteByLetter("D"),Quality.MAJOR)
     # print(cis.diatonicNotes)    
