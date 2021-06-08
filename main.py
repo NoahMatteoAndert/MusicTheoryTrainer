@@ -2,7 +2,6 @@ NOTES = [ "C" , "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 QUALITY = ["MAJOR", "MINOR"]
 MODES = [""]
 
-
 MAJOR_PATTERN = [2,2,1,2,2,2,1]
 
 import random 
@@ -35,7 +34,6 @@ class Scale:
         self.rootNote = rootNote
         self.quality = quality
         self.GetNotes()
-        print("root number: " + str(NOTES[self.rootNote]))
 
     def GetNotes(self):
         # only Major right now
@@ -47,11 +45,16 @@ class Scale:
 def GetNoteByLetter(noteLetter):
     return NOTES.index(noteLetter)
 
-def GetScales():
-    return NOTE(random.randint(0,12)) + " " +  QUALITY[random.randint(0,1)];
+def GetRandomnScale():
+    return Scale(random.randint(0,11), QUALITY[random.randint(0,1)])
 
 if __name__ == "__main__":
-    cis = Scale(GetNoteByLetter("D"),Quality.MAJOR)
-    print(cis.diatonicNotes)    
+
+    scale = GetRandomnScale()
+    print("Scale Root Note: " + str(NOTES[scale.rootNote]))
+    print("Diatonic Notes: " + str(scale.diatonicNotes))
+
+    # cis = Scale(GetNoteByLetter("D"),Quality.MAJOR)
+    # print(cis.diatonicNotes)    
 
 
